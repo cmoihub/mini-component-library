@@ -1,12 +1,12 @@
-import { Meta, Story } from '@storybook/addon-docs/blocks';
-import Select from './Select';
+import { Meta, Story } from "@storybook/addon-docs/blocks";
+import Select from "./Select";
 
 <Meta title="Select" component={Select} />
 
 # Select
 
 export const ManagedSelect = () => {
-  const [value, setValue] = React.useState('newest');
+  const [value, setValue] = React.useState("newest");
   return (
     <Select
       label="Sort"
@@ -22,4 +22,31 @@ export const ManagedSelect = () => {
 
 <Story name="Default">
   <ManagedSelect />
+</Story>
+
+export const LongSelect = () => {
+  const [firstValue, setFirstValue] = React.useState("newest");
+  const [secondValue, setSecondValue] = React.useState("price");
+  return (
+    <div style={{ display: "flex", justifyContent: "column" }}>
+      <Select
+        label="Sort"
+        value={firstValue}
+        onChange={(ev) => setFirstValue(ev.target.value)}
+      >
+        <option value="newest">Really long selected option!</option>
+      </Select>
+      <Select
+        label="Sort"
+        value={secondValue}
+        onChange={(ev) => setSecondValue(ev.target.value)}
+      >
+        <option value="price">Price</option>
+      </Select>
+    </div>
+  );
+};
+
+<Story name="Long">
+  <LongSelect />
 </Story>
